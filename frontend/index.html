@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Election Results</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Election Results</h1>
+      <p class="subtitle">Bầu chọn môn học tự chọn nội bộ với whitelist và update tự động.</p>
+    </header>
+
+    <section class="panel">
+      <div class="controls-row">
+        <button id="connectWalletButton" class="btn">Connect Wallet</button>
+        <div id="accountInfo" class="account">Your Account: <span id="accountAddress">Not connected</span></div>
+      </div>
+
+      <div class="controls-row">
+        <label for="contractAddress">Contract address</label>
+        <input id="contractAddress" type="text" placeholder="0x..." />
+        <button id="loadContractButton" class="btn">Load contract</button>
+      </div>
+
+      <p class="hint">Lưu ý: chỉ các địa chỉ được owner thêm vào whitelist mới có thể bỏ phiếu.</p>
+      <div id="statusMessage" class="status">Ready</div>
+      <div id="errorMessage" class="error"></div>
+    </section>
+
+    <section class="results">
+      <div class="results-header">
+        <h2>Election results</h2>
+        <div class="chart-card">
+          <canvas id="voteChart"></canvas>
+        </div>
+      </div>
+
+      <table id="resultsTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Votes</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="vote-panel">
+      <h2>Cast your vote</h2>
+      <div class="vote-row">
+        <select id="candidateSelect"></select>
+        <button id="voteButton" class="btn">Vote</button>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
